@@ -5,7 +5,7 @@ class VirtManager < Formula
   homepage "https://virt-manager.org/"
   url "https://virt-manager.org/download/sources/virt-manager/virt-manager-4.0.0.tar.gz"
   sha256 "515aaa2021a4bf352b0573098fe6958319b1ba8ec508ea37e064803f97f17086"
-  revision 1
+  revision 3
 
   depends_on "intltool" => :build
   depends_on "pkg-config" => :build
@@ -25,6 +25,7 @@ class VirtManager < Formula
   depends_on "python"
   depends_on "spice-gtk"
   depends_on "vte3"
+  depends_on "docutils"
 
   resource "libvirt-python" do
     url "https://libvirt.org/sources/python/libvirt-python-8.2.0.tar.gz"
@@ -56,8 +57,10 @@ class VirtManager < Formula
     sha256 "68d7c56fd5a8999887728ef304a6d12edc7be74f1cfa47714fc8b414525c9a61"
   end
 
-  # virt-manager doesn't prompt for password on macOS unless --no-fork flag is provided
-  patch :DATA
+  resource "docutils" do
+    url "https://files.pythonhosted.org/packages/57/b1/b880503681ea1b64df05106fc7e3c4e3801736cf63deffc6fa7fc5404cf5/docutils-0.18.1.tar.gz"
+    sha256 "679987caf361a7539d76e584cbeddc311e3aee937877c87346f31debc63e9d06"
+  end
 
   def install
     venv = virtualenv_create(libexec, "python3")
@@ -94,17 +97,3 @@ class VirtManager < Formula
   end
 end
 __END__
-diff --git a/virt-manager b/virt-manager
-index 15d5109..8ee305a 100755
---- a/virt-manager
-+++ b/virt-manager
-@@ -151,7 +151,8 @@ def parse_commandline():
-         help="Print debug output to stdout (implies --no-fork)",
-         default=False)
-     parser.add_argument("--no-fork", action="store_true",
--        help="Don't fork into background on startup")
-+        help="Don't fork into background on startup",
-+        default=True)
-
-     parser.add_argument("--show-domain-creator", action="store_true",
-         help="Show 'New VM' wizard")
