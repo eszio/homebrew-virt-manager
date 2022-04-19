@@ -37,7 +37,7 @@ class VirtManager < Formula
   end
 
   resource "certifi" do
-    url "https://pypi.io/packages/source/c/certifi/certifi-2021.10.8.tar.gz "
+    url "https://files.pythonhosted.org/packages/7d/e9/0431cbafa7d5e5abf614054d6099dc856d66870c0fe6d325730de3bdc7e9/types-certifi-2021.10.8.1.tar.gz"
     sha256 "25b64c7da4cd7479594d035c08c2d809eb4aab3a26e5a990ea98cc450c320f1f"
   end
 
