@@ -37,8 +37,8 @@ class VirtManager < Formula
   end
 
   resource "certifi" do
-    url "https://files.pythonhosted.org/packages/7d/e9/0431cbafa7d5e5abf614054d6099dc856d66870c0fe6d325730de3bdc7e9/types-certifi-2021.10.8.1.tar.gz"
-    sha256 "25b64c7da4cd7479594d035c08c2d809eb4aab3a26e5a990ea98cc450c320f1f"
+    url "https://files.pythonhosted.org/packages/6c/ae/d26450834f0acc9e3d1f74508da6df1551ceab6c2ce0766a593362d6d57f/certifi-2021.10.8.tar.gz"
+    sha256 "78884e7c1d4b00ce3cea67b44566851c4343c120abd683433ce934a68ea58872"
   end
 
   resource "chardet" do
